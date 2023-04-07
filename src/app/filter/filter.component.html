@@ -1,0 +1,13 @@
+<div class="filter">
+  <span>Filter: </span>
+
+  <input type="radio" name="filter" value="All" [(ngModel)]="selectedRadioButton" (change)="onRadioButton()"/>
+  <span>{{'All Courses('+all+')'}}</span>
+
+  <input type="radio" name="filter" value="Above"  [(ngModel)]="selectedRadioButton" (change)="onRadioButton()"/>
+  <span>{{'Above 5000/day('+above+')'}}</span>
+
+  <input type="radio" name="filter" value="Below"  [(ngModel)]="selectedRadioButton" (change)="onRadioButton()"/>
+  <span>{{'Below 5000/day('+below+')'}}</span>
+
+</div>

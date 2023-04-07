@@ -1,0 +1,50 @@
+<app-navbar></app-navbar>
+<div class="background">
+    <div class="bookpage">
+         CAR RENTAL SERVICE
+        <br>
+        <h1 style="font-size:40px;margin-top: 40px;color: rgb(0, 255, 255);">Car Booking</h1>
+    </div>
+</div>
+<div class="title1">
+  <h2>Available car brands</h2>
+</div>
+<div class="brand-card">
+<div class="cars-brands" >
+  <div class="brands" *ngFor="let brand of brands">
+  <img src="{{brand.logo}}" alt="{{brand.logoname}}">
+  <p>{{brand.logoname}}</p>
+</div>
+</div>
+</div>
+
+<div class="title">
+<h2>Search a Car for your ride</h2>
+</div>
+<app-searchbar (searchTextchanged)="onsearchtextEntered($event)"></app-searchbar>
+<!-- <app-filter [all]="getTotalCars()" [above]="getHighPriceCars()" [below]="getLowPriceCars()" (filterRadioButton)="onRadioButton($event)" ></app-filter> -->
+
+  <ng-container *ngFor="let carDetail of cardetails">
+    <!-- courseCountRadioButton === 'All' || courseCountRadioButton === course.type -->
+    <div class="container" *ngIf="searchText === '' || carDetail.carname.toLowerCase().includes(searchText) ">
+        <div class="card">
+         <div class="card-image">
+             <img src="{{carDetail.images}}">
+         </div>
+         <div class="card-info">
+             <h2>{{carDetail.carname}}</h2>
+             <span class="color">color: {{carDetail.color}}</span><br>
+             <span class="price"><i class="fa fa-rupee">&nbsp;</i>{{carDetail.price}}/day</span>
+             <span class="mileage"><i class="fa fa-tachometer"></i>&nbsp; {{carDetail.Mileage}} kmpl</span>
+             <span class="Fuel"><i class="fa-solid fa-gas-pump"></i>&nbsp;{{carDetail.Fuel}}</span>
+             <span class="seats"><i class="fa fa-car"></i>&nbsp;{{carDetail.seats}}seats</span>
+         </div>
+         <div class="card-footer">
+             <a routerLink="/details" class="button type">View More</a>
+         </div>
+       </div>
+       </div>
+       </ng-container>
+<app-footerpart></app-footerpart>
+<app-copyrights></app-copyrights>
+
